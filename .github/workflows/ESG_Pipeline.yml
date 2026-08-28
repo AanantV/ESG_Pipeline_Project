@@ -1,0 +1,30 @@
+name: ESG_Pipeline
+
+on:
+  push:
+      branches: [main, feature-stationary]
+  pull_request:
+      branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Check out code
+          uses: actions/checkout@v4
+
+        - name: Python Setup
+          uses: actions/setup-python@v5
+          with:
+            python-version: '3.11'
+
+        -  name: Install flake8
+           run: pip install flake8
+
+        -  name: Check for Syntax errors
+           run: python -m py_compile esg_pipeline.py
+
+        -  name: Lint with flake8
+           run: flake8 esg_pipeline.py --max-line-length=100 --exit-zero
+        
