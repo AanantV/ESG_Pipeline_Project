@@ -138,7 +138,8 @@ def main():
     print('Loading Data to big query....')
     load_to_bigquery(cleaned_df, project_id, dataset, table)
     print('Dataload successful')
-    print('Pipeline Execution Success')    
+    print('Pipeline Execution Success')   
+     
 
 if __name__ == '__main__':
     main()
